@@ -20,7 +20,7 @@ To run the code in this repository, you will need the following:
 * random
 
 ### Usage
-To run the code, simply execute the RRT.py file using python. The file includes a RRT_class where the methods are implemented to successfully run the algorithm. start, goal, goal bias and traversal distance is provided to the run function where the step wise implementation of RRT is done thereby returning a path from start to goal position if exists. You can modify these parameters to experiment with different scenaios. Make sure to correctly provide the path for the occupancy grid map image provided in the repository.
+To run the code, simply execute the RRT.py file using python. The file includes a RRT_class where the methods are implemented to successfully run the algorithm. The start, goal, goal bias and traversal distance is provided to the run function where the step wise implementation of RRT is done thereby returning a path from start to goal position if it exists. You can modify these parameters to experiment with different scenarios. Make sure to correctly provide the path for the occupancy grid map image provided in the repository.
 
 ### Output
 ![Path from start(635,140) to goal(350,400)](RRT_path.png)
