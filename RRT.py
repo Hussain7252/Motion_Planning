@@ -2,7 +2,6 @@
 from PIL import Image,ImageDraw
 import numpy as np
 import random
-from matplotlib import pyplot as plt
 from bresenham import  bresenham
 #Import Occupancy Map
 occupancy_map_img = Image.open('occupancy_map.png')
@@ -58,6 +57,7 @@ class RRT_class:
         for node in self.nodes:
             if self._euclidean_distance(newvertex,node) < smallest_distance:
                 nearnode = node
+                smallest_distance=self._euclidean_distance(newvertex,node)
         return nearnode 
     #Private method (Direction of traversal)
     def _unitvector(self,nearnode,newvertex):
