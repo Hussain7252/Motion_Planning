@@ -3,10 +3,11 @@ from PIL import Image,ImageDraw
 import numpy as np
 import random
 from bresenham import  bresenham
+
 #Import Occupancy Map
 occupancy_map_img = Image.open('occupancy_map.png')
 occupancy_grid = (np.asarray(occupancy_map_img) > 0).astype(int)
-print(occupancy_grid.shape)
+
 #Make a Tree
 class tree:
     def __init__(self,locationX,locationY):
@@ -35,18 +36,20 @@ class RRT_class:
             x = random.randint(1, self.grid.shape[0])
             y = random.randint(1, self.grid.shape[1])
             newvertex = np.array([x, y])
-        
-        for node in self.nodes:
-            if node.locationX == newvertex[0] and node.locationY == newvertex[1]:
-                self.sampling_point()
-            else:
-                return newvertex
-        '''
+
+        if newvertex[0] >= self.grid.shape[0]:
+            newvertex[0] = self.grid.shape[0]-1
+        if newvertex[1] >= self.grid.shape[1]:
+            newvertex[1] = self.grid.shape[1]-1
         if self.grid[newvertex[0],newvertex[1]]==0:
             self.sampling_point()
-        else:
-            return newvertex
-        '''      
+        
+        for node in self.nodes:
+            if (node.locationX == newvertex[0] and node.locationY == newvertex[1]):
+                self.sampling_point()
+    
+        return newvertex
+  
     #Private method (Find euclidean distance)    
     def _euclidean_distance (self,newvertex,node1):
         dist = np.sqrt((newvertex[0]-node1.locationX)**2 + (newvertex[1]-node1.locationY)**2) 
@@ -121,7 +124,7 @@ class RRT_class:
 
 start = np.array([635,140])
 goal = np.array([350,400])
-max_distance = 400
+max_distance = 50
 goal_bias = 0.6
 def run(start, goal, occupancy_grid, max_distance, goal_bias):
     # Initialize RRT
