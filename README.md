@@ -1,4 +1,23 @@
 # Motion Planning Algorithms
+## A*
+
+### What is A* and how it works?
+A* is the shortest path finding algorithm which is used to find the shortest path between two nodes in a graph.The A* algorithm uses a heuristic function to estimate the distance between the current node and the target node. This heuristic function, along with the actual cost of reaching the current node, is used to evaluate the priority of each node in the open set. The open set is the set of nodes that have been discovered but not yet explored. The A* algorithm works by exploring the node with the lowest total cost, which is the sum of the actual cost to reach the node and the estimated cost to reach the target node. It then expands the node and generates its neighbors, calculating their costs and adding them to the open set. This process continues until the target node is reached, or there are no more nodes in the open set. The A* algorithm guarantees to find the shortest path if the heuristic function satisfies the following conditions: it must be admissible (never overestimate the actual cost to reach the target node), and it must be consistent (the estimated cost from a node to the target node is no greater than the sum of the actual cost from the current node to the neighbor node and the estimated cost from the neighbor node to the target node).
+
+### Requirements
+To run the code in this repository you will need the following:
+* Python 3.x
+* numpy
+* math
+* queue
+* PIL
+* bresenham
+
+### Usage
+To run the code, simply execute the A_star.py file using python. The file includes a A_star class where the methods are implemented to successfully run the algorithm. The start and goal position along with occupancy map is provided to the class and the step wise implementation of A* is done in the method Astar which returns a path from start to goal position if it exists. You can modify these parameters to experiment with different scenarios. Make sure to correctly provide the path for the occupancy grid map image provided in the repository.
+
+### Output
+![A* path](Astarpath.png)
 
 ## RRT
 
