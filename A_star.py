@@ -1,9 +1,8 @@
 #Import Libraries
 from PIL import Image,ImageDraw
-import numpy as np
 import math
+import numpy as np
 from queue import PriorityQueue
-from matplotlib import pyplot as plt
 from bresenham import bresenham
 
 #Import Occupancy Map and covert it to an array

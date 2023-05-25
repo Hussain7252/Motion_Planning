@@ -116,10 +116,11 @@ class RRT_star:
 
     #True if goal is reached and adds goal to nodes list
     def goal_check (self,new_point):
-            if self._euclidean_distance(new_point,self.goal) < self.max_dist and self.obstaclecheck(new_point,self.goal):
+            if self._euclidean_distance(new_point,self.goal) < 40 and self.obstaclecheck(new_point,self.goal):
+                self.goal.parent = new_point
+                self.nodes.append(self.goal)
                 return True
             return False
-    
     
     #Generate Path
     def generate_path(self):

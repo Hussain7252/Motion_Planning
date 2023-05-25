@@ -39,9 +39,30 @@ To run the code in this repository, you will need the following:
 * random
 
 ### Usage
-To run the code, simply execute the RRT.py file using python. The file includes a RRT_class where the methods are implemented to successfully run the algorithm. The start, goal, goal bias and traversal distance is provided to the run function where the step wise implementation of RRT is done thereby returning a path from start to goal position if it exists. You can modify these parameters to experiment with different scenarios. Make sure to correctly provide the path for the occupancy grid map image provided in the repository.
+To run the code, simply execute the RRT.py file using python. The file includes a RRT_class where the methods are implemented to successfully run the algorithm. The start, goal, goal bias and traversal distance is provided to the "run" function where the step wise implementation of RRT is done thereby returning a path from start to goal position if it exists. You can modify these parameters to experiment with different scenarios. Make sure to correctly provide the path for the occupancy grid map image provided in the repository.
 
 ### Output
 ![Path from start(635,140) to goal(350,400)](RRT_path.png)
+
+## RRT*
+
+### What is RRT*?
+RRT* is an extension of the RRT algorithm that addresses some of its limitations. One significant drawback of RRT is that it does not guarantee finding an optimal solution. RRT* improves upon this by maintaining a cost-to-come value for each node in the tree and rewiring the tree structure to improve the paths as new nodes are added. The rewiring step involves considering neighboring nodes and reassigning the parent of a node if a shorter path is discovered.
+
+The main idea behind RRT* is to find a near-optimal solution by iteratively improving the tree structure based on the cost-to-come values. The algorithm continues to explore the state space until a termination condition is met, such as reaching a goal state or a maximum number of iterations. At the end, the path from the initial state to the goal state can be extracted from the tree structure.
+
+### Requirements
+To run the code in this repository, you will need the following:
+* Python 3.x
+* numpy
+* PIL
+* bresenham
+* random
+
+### Usage
+To run the code, simply execute the RRT_star.py file using python. The file includes a RRT_star class where the methods are implemented to successfully run the algorithm. The start, goal, goal bias, traversal distance and number of iterations is provided to the main function of the class RRT_star where the step wise implementation of RRT* is done thereby returning a path from start to goal position if it exists. You can modify these parameters to experiment with different scenarios. Make sure to correctly provide the path for the occupancy grid map image provided in the repository. Here I have used a fixed radius to search for the neighbouring nodes within a given radius for rewiring and connecting the new node to the node with the least cost but a varing radius can also be provided that depends on number of sampling points or distance from the goal position.
+
+### Output
+![Path from start(635,140) to goal(350,400)](RRTstar_path.png)
 
 
